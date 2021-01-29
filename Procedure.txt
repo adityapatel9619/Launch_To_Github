@@ -1,0 +1,73 @@
+--
+-- Declare @ReturnMessage varchar(150) EXECUTE Proc_Register 1,'Aditi','Patel','Miraroad(East)',21,'1234567890','adi@gmail.com',1,'S',@ReturnMessage Output;SELECT @ReturnMessage
+
+Alter PROCEDURE [dbo].[Proc_Register]
+	@ID int,
+	@Firstname varchar(25) = null,
+	@Lastname varchar(25) = null,
+	@AddressDetails varchar(250) = null,
+	@Age int = null,
+	@Mobilenumber varchar(10) = null,
+	@Emailid varchar(50) = null,
+	@Qualification int = null,
+	@Type varchar(10),
+	@ReturnMessage varchar(100) OUTPUT
+	
+AS 
+BEGIN
+
+if(@Type='A' And @id=0)
+Begin	
+	INSERT INTO [dbo].[Register]
+                                (
+                                 Firstname                                                        
+                                ,Lastname        
+                                ,AddressDetails
+								,Age
+								,Mobilenumber
+								,Emailid
+								,Qualification                                                                
+                                )
+                                Values
+                                (
+                                 @Firstname
+								,@Lastname
+								,@AddressDetails
+								,@Age
+								,@Mobilenumber
+								,@Emailid
+								,@Qualification                               
+                                )
+				Set @ID=@@IDENTITY
+	Set @ReturnMessage='Saved Successfully!!'
+End
+else if(@Type='E' AND @ID>0)
+Begin
+Update Register Set
+	FirstName	=	@Firstname,
+	Lastname	=	@Lastname,
+	AddressDetails =  @AddressDetails,
+	Age			   = @Age,	
+	Mobilenumber =@Mobilenumber,
+	Emailid	  =@Emailid,
+	Qualification=@Qualification
+	Where ID=@ID
+
+	Set @ReturnMessage='Updated Successfully!!'
+
+End
+IF (@Type='S' AND @Id=0)
+Begin
+Select * From Register
+End
+Else IF(@Type='S' AND @ID>0)
+Begin
+Select * From Register Where ID=@ID
+End
+
+If(@Type='D')
+Begin
+Delete From Register Where Id=@ID
+Set @ReturnMessage='Deleted Successfully!!'
+End
+END

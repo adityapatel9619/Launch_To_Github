@@ -71,3 +71,6 @@ Delete From Register Where Id=@ID
 Set @ReturnMessage='Deleted Successfully!!'
 End
 END
+
+
+https://formden.com/blog/validate-contact-form-jquery

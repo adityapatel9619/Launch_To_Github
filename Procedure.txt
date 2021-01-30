@@ -73,4 +73,10 @@ End
 END
 
 
+jQuery form validation
+
 https://formden.com/blog/validate-contact-form-jquery
+
+jQuery form validation search link
+
+https://www.google.com/search?q=how+to+validate+each+text+field+in+jquery&oq=how+tovvalidate+each+text+feild+&aqs=chrome.1.69i57j33i10i160.13535j1j7&sourceid=chrome&ie=UTF-8

@@ -1,0 +1,436 @@
+<script>
+    //for refresh the datalist
+    $(document).ready(function () {
+        DestroyRegiosteredList();
+    });
+    // for cancel the form page
+    function Cancel() {
+        location.reload();
+    }
+
+    // for showing the form page and hide the data list page
+    function ShowDiv() {
+        $("#divRegisterList").hide();
+        $("#divRegisterentry").show();
+    }
+    // Validation declaration 
+    function Hellovalidation() {
+        var isValid = true;
+        var txtFname = $('#txtFirstname');
+        var txtLname = $('#txtLastname');
+        var ddlQualification = $('#ddlQualification');
+        var txtMobileno = $('#txtMobileno');
+        var txtEmail = $('#txtEmail');
+        var txtAddress = $('#txtAddress');
+        var txtDateofbirth = $('#txtDateofbirth');
+        var txtAge = $('#txtAge');
+
+        // Validation for FirstName
+        if ($.trim((txtFname).val()) == '' || $.trim((txtFname).val()) == null) {
+            isValid = false;
+            $(txtFname).css({
+                "border": "1px solid red",
+                "background": "#FFCECE"
+            });
+        }
+        else {
+            $(txtFname).css({
+                "border": "",
+                "background": ""
+            });
+        }
+          // Validation for LastName
+        if ($.trim((txtLname).val()) == '' || $.trim((txtLname).val()) == '0') {
+            isValid = false;
+            $(txtLname).css({
+                "border": "1px solid red",
+                "background": "#FFCECE"
+            });
+        }
+        else {
+            $(txtLname).css({
+                "border": "",
+                "background": ""
+            });
+        }
+        // Validation for Mobile no
+        //if ($.trim((txtMobileno).val()) == '' || $.trim((txtMobileno).val()) == '0') {
+        //    isValid = false;
+        //    $(txtMobileno).css({
+        //        "border": "1px solid red",
+        //        "background": "#FFCECE"
+        //    });
+        //}
+        //else {
+        //    $(txtMobileno).css({
+        //        "border": "",
+        //        "background": ""
+        //    });
+        //}
+
+
+        if ($.trim((txtMobileno).val()) == '') {
+            isValid = false;
+            $(txtMobileno).css({
+                "border": "1px solid red",
+                "background": "#FFCECE"
+            });
+        }
+        else {
+            if ($.trim((txtMobileno).val()) != '') {
+                {
+                    if (!mobileNumber($.trim((txtMobileno).val()))) {
+                        isValid = false;
+                        $(txtMobileno).css({
+                            "border": "1px solid red",
+                            "background": "#FFCECE"
+                        });
+                    }
+                    else {
+                        $(txtMobileno).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+                }
+            }
+        }
+
+        if ($.trim((txtEmail).val()) == '') {
+            isValid = false;
+            $(txtEmail).css({
+                "border": "1px solid red",
+                "background": "#FFCECE"
+            });
+            isValid = true;
+        }
+        else {
+            if ($.trim((txtEmail).val()) != '') {
+                {
+                    if (!isValidEmailAddress($.trim((txtEmail).val()))) {
+                        isValid = false;
+                        $(txtEmail).css({
+                            "border": "1px solid red",
+                            "background": "#FFCECE"
+                        });
+                    }
+                    else {
+                        $(txtEmail).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+                }
+            }
+        }
+        // Validation for Email
+        //if ($.trim((txtEmail).val()) == '' || $.trim((txtEmail).val()) == '0') {
+        //    isValid = false;
+        //    $(txtEmail).css({
+        //        "border": "1px solid red",
+        //        "background": "#FFCECE"
+        //    });
+        //}
+        //else {
+        //    $(txtEmail).css({
+        //        "border": "",
+        //        "background": ""
+        //    });
+        //}
+        // Validation for Qualification
+        if ($.trim((ddlQualification).val()) == '0' || $.trim((ddlQualification).val()) == null) {
+            isValid = false;
+            $(ddlQualification).css({
+                "border": "1px solid red",
+                "background": "#FFCECE"
+            });
+        }
+        else {
+            $(ddlQualification).css({
+                "border": "",
+                "background": ""
+            });
+        }
+        // Validation for Address
+
+        if ($.trim((txtAddress).val()) == '' || $.trim((txtAddress).val()) == '0') {
+            isValid = false;
+            $(txtAddress).css({
+                "border": "1px solid red",
+                "background": "#FFCECE"
+            });
+        }
+        else {
+            $(txtAddress).css({
+                "border": "",
+                "background": ""
+            });
+        }
+        // Validation for Date of birth
+        if ($.trim((txtDateofbirth).val()) == '' || $.trim((txtDateofbirth).val()) == '0') {
+            isValid = false;
+            $(txtDateofbirth).css({
+                "border": "1px solid red",
+                "background": "#FFCECE"
+
+            });
+        }
+        else {
+            $(txtDateofbirth).css({
+                "border": "",
+                "background": ""
+            });
+        }
+        // Validation for Age
+        if ($.trim((txtAge).val()) == '' || $.trim((txtAge).val()) == '0') {
+            isValid = false;
+            $(txtAge).css({
+                "border": "1px solid red",
+                "background": "#FFCECE"
+
+            });
+        }
+        else {
+            $(txtAge).css({
+                "border": "",
+                "background": ""
+            });
+        }
+        
+        //check for all validation
+
+        if (isValid == false) {
+            e.preventDefault();
+        }
+        else {
+            if ($('#btnAdd').val() == "Save") {
+                SaveRegister();
+            }
+            else {
+                UpdateRegister();
+
+            }
+
+            return true;
+        }
+
+    }
+
+
+    //For Getting Data/Binding
+    function DestroyRegiosteredList() {
+        if (typeof tblregister != 'undefined') {
+            tblregister.destroy();
+            RegiosteredList();
+        }
+        else {
+            RegiosteredList();
+        }
+
+    }
+
+    function RegiosteredList() {
+
+        $("#tBodyIndexEntry").html('');
+
+
+        jQuery.support.cors = true;
+        $.ajax(
+            {
+                url: '/api/Register/GetRegisterlist',
+                type: 'GET',
+                contentType: "application/json",
+                success: function (data) {
+                    var sr = 0
+                    $.each(data, function (key, item) {
+                        sr += 1
+                        strdata = "<tr>" +
+                           // alert(item.id);
+                               "<td >" + sr + "</td>"+
+                                "<td>" + item.firstname + "</td>" +
+                                "<td><span>" + item.lastname + "</span></td>" +
+                                "<td><span>" + item.address + "</span></td>" +
+                                "<td><span>" + item.dateofbirth + "</span></td>" +
+                                "<td><span>" + item.age + "</span></td>" +
+                                "<td><span>" + item.mobileno + "</span></td>" +
+                                "<td><span>" + item.emailid + "</span></td>" +
+                                "<td><span>" + item.qualification + "</span></td>" +
+                            "<td style='width:70px;text-align: center;'>  <a href='#' Title='Edit' id='lnkEdit' onclick='EditRegister(" + item.id + ")'>Edit </a> <a href='#' title='Delete' id='lnkDelete' onclick='DeleteRegister(" + item.id + ")'>Delete</a>  </td>" +
+
+
+                                "</tr>";
+                        $("#tBodyIndexEntry").append(strdata);
+                        strdata = "";
+                    });
+                },
+                complete: function () {
+
+                    tblregister = $('#tblIndexEntery').DataTable({
+                        responsive: true,
+                        "columnDefs": [{
+                            "targets": 'nosort',
+                            "orderable": false,
+                            "targets": [0, 9]
+                        }],
+                        "order": [[0, 'asc']]
+                    });
+
+
+                },
+                error: function (jqXHR, textStatus, err) {
+                    //alert(err);
+                }
+            });
+    }
+
+
+    // for Save
+
+    function SaveRegister() {
+        var Register = {
+            firstname: $("#txtFirstname").val(),
+            lastname: $("#txtLastname").val(),
+            address: $("#txtAddress").val(),
+            dateofbirth: $("#txtDateofbirth").val(),
+            age: $("#txtAge").val(),
+            mobileno: $("#txtMobileno").val(),
+            emailid: $("#txtEmail").val(),
+            qualification: $("#ddlQualification").val(),
+            userid: 1,
+         
+
+        }
+        $('#btnAdd').attr('disabled', 'disabled');
+
+        var ajaxRequest = $.ajax({
+            url: '/api/Register/SaveRegister',
+            type: 'POST',
+            data: JSON.stringify(Register),
+            contentType: "application/json",
+            success: function (data) {
+                alert(data);
+
+                Clear();
+                Cancel();
+                DestroyRegiosteredList();
+            },
+            error: function (jqXHR, textStatus, err) {
+                //alert(err);
+            }
+
+
+        });
+        $('#btnAdd').attr('disabled', false);
+
+
+    }
+
+    //for edit
+    function EditRegister(id) {
+        ShowDiv();
+
+        $("#hdnId").val("0");
+
+        jQuery.support.cors = true;
+        $.ajax(
+            {
+                url: '/api/Register/EditRegisteredlist?id=' + id,
+                type: 'GET',
+                contentType: "application/json",
+
+                success: function (data) {
+                    $("#txtFirstname").val(data[0].firstname);
+                    $("#txtLastname").val(data[0].lastname);
+                    $("#txtAddress").val(data[0].address);
+                    $("#txtDateofbirth").val(data[0].dateofbirth);
+                    $("#txtAge").val(data[0].age);
+                    $("#txtMobileno").val(data[0].mobileno);
+                    $("#txtEmail").val(data[0].emailid);
+                    $("#ddlQualification").val(data[0].qualification);
+                    $("#btnAdd").val("Update");
+                  
+                    $("#hdnId").val(id);
+                },
+                error: function (jqXHR, textStatus, err) {
+                    //alert(err);
+                }
+            });
+    }
+
+    //for update 
+    function UpdateRegister() {
+        var Register = {
+            id: $("#hdnId").val(),
+            firstname: $("#txtFirstname").val(),
+            lastname: $("#txtLastname").val(),
+            address: $("#txtAddress").val(),
+            dateofbirth: $("#txtDateofbirth").val(),
+            age: $("#txtAge").val(),
+            mobileno: $("#txtMobileno").val(),
+            emailid: $("#txtEmail").val(),
+            qualification: $("#ddlQualification").val(),
+            userid: 1,
+
+
+        }
+        $('#btnAdd').attr('disabled', 'disabled');
+
+        var ajaxRequest = $.ajax({
+            url: '/api/Register/UpdateRegister',
+            type: 'PUT',
+            data: JSON.stringify(Register),
+            contentType: "application/json",
+            success: function (data) {
+                alert(data);
+
+                Clear();
+                Cancel();
+                DestroyRegiosteredList();
+                $("#btnAdd").val("Save");
+            },
+            error: function (jqXHR, textStatus, err) {
+                //alert(err);
+            }
+
+
+        });
+        $('#btnAdd').attr('disabled', false);
+
+
+    }
+
+    //for delete
+    function DeleteRegister(id) {
+        var check = confirm("Are you sure to Delete it?")
+        if (check) {
+            
+            var deletedby = 1; 
+            var ajaxRequest = $.ajax({
+                url: '/api/Register/DeleteRegister?id=' + id + '&deletedBy=' + deletedby,
+                type: 'Delete',
+                data: JSON,
+                contentType: "application/json",
+                success: function (data) {
+                    //alert(data);
+                    alert(data);
+                    DestroyRegiosteredList();
+                },
+                error: function (jqXHR, textStatus, err) {
+                    //alert(err);
+                }
+            });
+        }
+    }
+
+    function Clear() {
+        $("txtFirstname").val('');
+        $("txtLastname").val('');
+        $("txtAddress").val('');
+        $("txtDateofbirth").val('');
+        $("txtAge").val('');
+        $("txtMobileno").val('');
+        $("txtEmail").val('');
+        $("ddlQualification").val('');
+    }
+
+</script>

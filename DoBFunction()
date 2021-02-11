@@ -1,0 +1,15 @@
+// This function will take dob as input and print age on age textbox on click of date of birth 
+
+function ageCount() {
+        var date1 = new date();
+        var dob = document.getElementById("txtDateofbirth").value;
+        var date2 = new date(dob);
+        var pattern = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+        if (pattern.test(dob)) {
+            var y1 = date1.getFullYear();
+            var y2 = date2.getFullYear();
+            var age = y1 - y2;
+            document.write("Age :" + age);
+            return true;
+        }
+    }

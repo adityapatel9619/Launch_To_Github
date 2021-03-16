@@ -27,16 +27,95 @@
                 </h4>
             </div>
             <form>
-                <!-- Form FirstName -->
+                <!-- Full Name -->
                 <div class="form-group">
-                    <label for="lblFname">
+                    <label for="lblFname" class="font-weight-bold">
                         Full Name
                     </label>
                     <input type="text" class="form-control" id="txtFname" placeholder="Aditya Shreeprakash Patel">
                 </div>
 
+                <!-- Address -->
                 <div class="form-group">
-                    <label for="lblGender">
+                    <label for="lblAddress" class="font-weight-bold">
+                        Enter Address
+                    </label>
+                    <input type="text" class="form-control" id="txtAddress" placeholder="A-70, Silver Oaks, Beverly Hills, California, USA" />
+                </div>
+
+                <!-- Area -->
+                <div class="form-group">
+                    <label for="lblArea" class="font-weight-bold">
+                        Enter Area
+                    </label>
+                    <input type="text" class="form-control" id="lblArea" placeholder="Beverly Hills" />
+                </div>
+
+                <!-- City -->
+                <div class="form-group">
+                    <label for="lblCity" class="font-weight-bold">
+                        Enter City
+                    </label>
+                    <input type="text" class="form-control" id="lblCity" placeholder="Mira Road" />
+                </div>
+
+                <!-- Pincode -->
+                <div class="form-group">
+                    <label for="lblPincode" class="font-weight-bold">
+                        Enter Pincode
+                    </label>
+                    <input type="text" class="form-control" id="lblPincode" placeholder="401107" />
+                </div>
+
+                <!-- State -->
+                <div class="form-group">
+                    <label for="lblState" class="font-weight-bold">
+                        Select State
+                    </label>
+                    <select class="form-control" id="lblState">
+                        <option value="0">----- Select State -----</option>
+                        <option value="1">Andhra Pradesh</option>
+                        <option value="2">Arunachal Pradesh</option>
+                        <option value="3">Assam</option>
+                        <option value="4">Bihar</option>
+                        <option value="5">Chhattisgarh</option>
+                        <option value="6">Goa</option>
+                        <option value="7">Gujarat</option>
+                        <option value="8">Haryana</option>
+                        <option value="9">Himachal Pradesh</option>
+                        <option value="10">Jharkhand</option>
+                        <option value="11">Karnataka</option>
+                        <option value="12">Kerala</option>
+                        <option value="13">Madhya Pradesh</option>
+                        <option value="14">Maharashtra</option>
+                        <option value="15">Manipur</option>
+                        <option value="16">Meghalaya</option>
+                        <option value="17">Mizoram</option>
+                        <option value="18">Nagaland</option>
+                        <option value="19">Odisha</option>
+                        <option value="20">Punjab</option>
+                        <option value="21">Rajasthan</option>
+                        <option value="22">Sikkim</option>
+                        <option value="23">Tamil Nadu</option>
+                        <option value="24">Telangana</option>
+                        <option value="25">Tripura</option>
+                        <option value="26">Uttar Pradesh</option>
+                        <option value="27">Uttarakhand</option>
+                        <option value="28">West Bengal</option>
+                    </select>
+                </div>
+
+                <!-- Age -->
+                <div class="form-group">
+                    <label for="lblAge" class="font-weight-bold">
+                        Enter Age
+                    </label>
+                    <input type="text" class="form-control" id="txtAge" placeholder="Age" />
+                </div>
+
+                <!-- Gender -->
+                <div class="form-group">
+                    <label for="lblGender" class="font-weight-bold">
                         Select Gender
                     </label>
                     <div class="form-check">
@@ -59,48 +138,88 @@
                     </div>
                 </div>
 
+                <!-- Date of Birth -->
+                <div class="form-group">
+                    <label for="lblDob" class="font-weight-bold">
+                        Enter Date Of Birth
+                    </label>
+                    <input class="form-control" type="date" value="10-07-1999" id="lblDob">
+                </div>
 
-                
+                <!-- Adhaar Card Number -->
+                <div class="form-group">
+                    <label for="lblAdhaarNum" class="font-weight-bold">
+                        Enter Adhaar Card Number
+                    </label>
+                    <input type="text" class="form-control" id="lblAdhaarNum" placeholder="1111-2222-3333" />
+                </div>
+
+                <!-- Pan Card Number -->
+                <div class="form-group">
+                    <label for="lblPanNum" class="font-weight-bold">
+                        Enter Pan Card Number
+                    </label>
+                    <input type="text" class="form-control" id="lblPanNum" placeholder="ABCD1111A" />
+                </div>
+
+                <!-- Email id -->
+                <div class="form-group">
+                    <label for="lblEmailid" class="font-weight-bold">
+                        Enter Email Id
+                    </label><span style="color:red" class="ml-1">*This emaild is your login id</span>
+                    <input type="email" class="form-control" id="lblEmailid" placeholder="abcd@gmail.com" />
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="lblPassword" class="font-weight-bold">
+                        Enter Password
+                    </label>
+                    <input type="password" id="lblPassword" class="form-control" aria-describedby="passwordHelpBlock">
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                    </small>
+                </div>
 
                 <!-- Form Email -->
                 <!--<div class="form-group">
-                    <label for="email">
-                        Enter Email <span>
-                            <svg class="bi bi-at" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z" clip-rule="evenodd"></path>
-                            </svg>
-                        </span>
-                    </label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="aditya@mail.com">
-                    <small id="emailHelp" class="form-text text-muted">
-                        We'll never share your email with anyone
-                        else.
-                    </small>
-                </div>-->
+        <label for="email">
+            Enter Email <span>
+                <svg class="bi bi-at" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z" clip-rule="evenodd"></path>
+                </svg>
+            </span>
+        </label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="aditya@mail.com">
+        <small id="emailHelp" class="form-text text-muted">
+            We'll never share your email with anyone
+            else.
+        </small>
+    </div>-->
                 <!-- Form Password -->
                 <!--<div class="form-group">
-                    <label for="pwd">
-                        Enter Password <span>
-                            <svg class="bi bi-lock-fill" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="11" height="9" x="2.5" y="7" rx="2"></rect>
-                                <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 117 0v3h-1V4a2.5 2.5 0 00-5 0v3h-1V4z" clip-rule="evenodd"></path>
-                            </svg>
-                        </span>
-                    </label>
-                    <input type="password" class="form-control" id="pwd">
-                </div>-->
+        <label for="pwd">
+            Enter Password <span>
+                <svg class="bi bi-lock-fill" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="11" height="9" x="2.5" y="7" rx="2"></rect>
+                    <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 117 0v3h-1V4a2.5 2.5 0 00-5 0v3h-1V4z" clip-rule="evenodd"></path>
+                </svg>
+            </span>
+        </label>
+        <input type="password" class="form-control" id="pwd">
+    </div>-->
                 <!-- Form ConfirmPassword -->
                 <!--<div class="form-group">
-                    <label for="cnfpwd">
-                        Confirm Password <span>
-                            <svg class="bi bi-lock-fill" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="11" height="9" x="2.5" y="7" rx="2"></rect>
-                                <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 117 0v3h-1V4a2.5 2.5 0 00-5 0v3h-1V4z" clip-rule="evenodd"></path>
-                            </svg>
-                        </span>
-                    </label>
-                    <input type="password" class="form-control" id="cnfpwd">
-                </div>-->
+        <label for="cnfpwd">
+            Confirm Password <span>
+                <svg class="bi bi-lock-fill" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="11" height="9" x="2.5" y="7" rx="2"></rect>
+                    <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 117 0v3h-1V4a2.5 2.5 0 00-5 0v3h-1V4z" clip-rule="evenodd"></path>
+                </svg>
+            </span>
+        </label>
+        <input type="password" class="form-control" id="cnfpwd">
+    </div>-->
 
                 <div class="text-center"><button type="submit" class="btn btn-primary" id="myBtnSubmit">Submit</button></div>
 
